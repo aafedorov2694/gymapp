@@ -1,0 +1,28 @@
+	<!DOCTYPE HTML>
+<html 
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Server Programming with Spring Boot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+	<body>
+
+		<h1>Edit customer</h1>
+		
+		<form action="#" th:action="@{/savecustomer}" th:object="${customer}" method="post">
+			<label for = "cusId"></label>
+			<input type="hidden" th:field="*{cusId}"/><p>
+			<p>Name: <input type="text" th:field="*{name}" /></p>
+			<p>Date of Birth: <input type="date" th:field="*{birthDate}" /></p>
+			<p>Weight: <input type="text" th:field="*{customerparam[0].weight}" /></p>
+			<p>Height: <input type="text" th:field="*{customerparam[0].height}" /></p>
+			
+			
+			<p><input type="submit" value="Submit" /></p>
+		</form>
+		
+		
+		
+	</body>
+</html>

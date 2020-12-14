@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html 
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Server Programming with Spring Boot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+
+<body>
+
+		<h1>ExerciseLog</h1>
+	
+			<table  class="table table-striped">
+				<tr>
+					
+					<th>Exercise</th>
+					<th>Set</th>
+					<th>Reps</th>
+					<th>Weight</th>
+					<th>Date</th>
+					<th></th>
+					
+				</tr>
+				
+			
+					<tr th:each = "exercise : ${anything}">
+					<td th:text = "${exercise.name}" >
+					<td th:text = "${exercise.exstat[0].sets}" >
+					<td th:text = "${exercise.exstat[0].reps}" >
+					<td th:text = "${exercise.exstat[0].weight}" >
+					<td th:text = "${exercise.exstat[0].date}" >
+					
+					<td><a th:href="@{/delete/{id}(id=${exercise.exId})}">Delete</a>
+					<td><a th:href="@{/modify/{id}(id=${exercise.exId})}">Edit</a>
+					  
+				</tr>
+			</table>
+			<a th:href = "@{/addExercise}" class="btn btn-success">Add exercise</a>
+			
+
+		
+		
+	</body>
+</html>
+

@@ -1,0 +1,24 @@
+	<!DOCTYPE HTML>
+<html 
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Server Programming with Spring Boot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+	<body>
+
+		<h1>Home Page</h1>
+		
+		
+			<form action="#" th:action="@{showhistory}" th:object="${exercise}">
+			
+			<p>History by name <input type="text" th:field="*{name}">
+			
+			<p><input type="submit" value="Submit" /></p>
+			</form>
+		
+		
+		
+	</body>
+</html>

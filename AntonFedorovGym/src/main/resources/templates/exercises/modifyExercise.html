@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html 
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Server Programming with Spring Boot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+	<body>
+
+		<h1>Edit Exercise</h1>
+		
+		<form action="#" th:action="@{/save}" th:object="${exercise}" method="post">
+			<label for = "exId"></label>
+			<input type="hidden" id = "exId" th:field="*{exId}"/><p>
+			<p>Exercise: <input type="text" th:field="*{name}" /></p>
+			<p>Set: <input type="text" th:field="*{exstat[0].sets}" /></p>
+			<p>Reps: <input type="text" th:field="*{exstat[0].reps}" /></p>
+			<p>Weight: <input type="text" th:field="*{exstat[0].weight}" /></p>
+			<p>Date: <input type="text" th:field="*{exstat[0].date}" /></p>
+			<p><input type="submit" value="Submit" /></p>
+		</form>
+		
+		
+		
+	</body>

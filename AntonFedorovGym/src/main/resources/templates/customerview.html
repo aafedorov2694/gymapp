@@ -1,0 +1,42 @@
+	<!DOCTYPE HTML>
+<html
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Server Programming with Spring Boot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+
+	<body>
+	
+		<h1>Customer</h1>
+			<table  class="table table-striped">
+				<tr>
+				<th>Name</th>
+				<th>Date of birth</th>
+				<th>Weight</th>
+				<th>Height</th>
+				</tr>
+				
+				<tr th:each = "customer:${anything}" >
+					<td th:text = "${customer.name}"></td>
+					<td th:text = "${customer.birthDate}"></td>
+					<td th:text = "${customer.customerparam[0].weight}"></td>
+					<td th:text = "${customer.customerparam[0].height}"></td>
+					
+					<td><a th:href = "@{/deletecustomer/{id}(id=${customer.cusId})}">Delete</a></td>
+					<td><a th:href = "@{/editcustomer/{id}(id=${customer.cusId})}">Modify</a></td>
+				</tr>
+				
+			</table>
+			
+			<a th:href = "@{/addcustomer}" class="btn btn-success">Change my data</a>
+	
+	
+	</body>
+
+
+
+
+
+</html>
