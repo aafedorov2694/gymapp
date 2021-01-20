@@ -1,4 +1,5 @@
 package com.example.AntonFedorovGym.Web;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +102,7 @@ public class GymController {
 		
 		@GetMapping(value = {"/customer"})
 		public String CustomerData(Model model) {
+			
 			model.addAttribute("anything", cusrep.findAll());
 			return "customerview";
 		
@@ -109,16 +111,18 @@ public class GymController {
 		//AddCustomer//
 		
 		@RequestMapping(value = "/addcustomer")
-		public String AddCustomer(Model model) {
-			Customer customer = new Customer();
+		public String AddCustomer(@ModelAttribute("customerparameter") CustomerParameter customer, Model model) {
+		
+			
 			String endpoint = "";
 			
 			if (cusrep.count() == 0) {
 				model.addAttribute("customer", customer);
+				
 				endpoint = "addcustomer";
 				
 				} else {
-					endpoint = "addparameters";
+					endpoint = "plug";
 					
 				}
 
@@ -126,22 +130,36 @@ public class GymController {
 			
 		}
 		
+		
+		
 		@RequestMapping(value = "/savecustomer", method = RequestMethod.POST)
-		public String SaveCustomer(Customer cus, Model model) {
+		public String SaveCustomer(CustomerParameter cus, Model model) {
 			
-			cusrep.save(cus);
+			cusparamrep.save(cus);
 			return "redirect:customer";
 			
 		}
 		
 		
-	
+		@RequestMapping(value = "/editcustomer/{id}", method = RequestMethod.GET)
 		
-		@RequestMapping(value = "/addparameter")
-		public String UpdCustomer(@ModelAttribute CustomerParameter parameter, Model model) {
+		public String modifyCus(@PathVariable("id") Long paramId, Model model) {
 			
-			model.addAttribute("parameter", parameter);
-			return "addparameter";
+	
+			model.addAttribute("customer", cusparamrep.findById(paramId));
+			
+			return "editcustomer";
+		}
+		
+		
+		
+	///weightHistory///	
+		
+		@RequestMapping(value = "/cushistory")
+		public String UpdCustomer(Model model) {
+			model.addAttribute("anything", cusrep.findAll());
+			return "weighthistory";
+			
 			
 		}
 	
@@ -160,15 +178,6 @@ public class GymController {
 		
 		//edit//
 		
-				@RequestMapping(value = "/editcustomer/{id}", method = RequestMethod.GET)
-				
-				public String modifyCus(@PathVariable("id") Long cusId, Model model) {
-					
-					Optional<Customer> customer = cusrep.findById(cusId);
-					model.addAttribute("customer", customer);
-					
-					return "editcustomer";
-				}
 				
 				
 		

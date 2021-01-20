@@ -7,10 +7,22 @@ xmlns:th="http://www.thymeleaf.org">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 	<body>
-
-		<h1>Only one customer allowed</h1>
+	
+		<h1>Add parameters</h1>
 		
-		<a th:href = "@{/customer}" class="btn btn-success">My information</a>
+		<form action="#" th:action="@{savecustomer}" th:object = "${customerparameter}"  method="post">				
+			
+				
+				<input type="hidden" th:field = "*{customerparameter.cusId}"/>
+				<p>Weight:<input type="text" th:field="*{weight}"/></p>
+				<p>Height:<input type="text" th:field="*{height}"/></p>
+				<p>Date:<input type="text" th:field="*{date}"/></p>
+				
+
+			<p><input type="submit" value="Submit" /></p>
+		</form>
+		
+		
 		
 	</body>
 </html>

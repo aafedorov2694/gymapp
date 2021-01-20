@@ -3,13 +3,15 @@ package com.example.AntonFedorovGym.Model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
 
 @Entity
 public class CustomerParameter {
@@ -21,32 +23,22 @@ public class CustomerParameter {
 	private double height;
 	private String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	
-	 @ManyToOne(targetEntity = Customer.class)
-	 @JoinColumn(name = "cusId", referencedColumnName = "cusId")
+	 @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	 @JoinColumn(name = "cusId")
 	 private Customer customer;
 	
 	public CustomerParameter() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public CustomerParameter(long paramId, double weight, double height, String date, Customer customer) {
+	public CustomerParameter(double weight, double height, String date, Customer customer) {
 		super();
-		this.paramId = paramId;
 		this.weight = weight;
 		this.height = height;
 		this.date = date;
 		this.customer = customer;
 	}
 	
-	public long getParamId() {
-		return paramId;
-	}
-
-	public void setParamId(long paramId) {
-		this.paramId = paramId;
-	}
-
 
 	public double getWeight() {
 		return weight;

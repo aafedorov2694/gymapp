@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 	public interface CustomerRepository extends CrudRepository<Customer, Long>{
-		List<Customer> findByName(@Param("name") String name);
+		
 	}
 
 

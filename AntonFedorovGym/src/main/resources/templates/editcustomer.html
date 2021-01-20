@@ -10,16 +10,15 @@ xmlns:th="http://www.thymeleaf.org">
 
 		<h1>Edit customer</h1>
 		
-		<form action="#" th:action="@{/savecustomer}" th:object="${customer}" method="post">
-			<label for = "cusId"></label>
-			<input type="hidden" th:field="*{cusId}"/><p>
-			<p>Name: <input type="text" th:field="*{name}" /></p>
-			<p>Date of Birth: <input type="date" th:field="*{birthDate}" /></p>
-			<p>Weight: <input type="text" th:field="*{customerparam[0].weight}" /></p>
-			<p>Height: <input type="text" th:field="*{customerparam[0].height}" /></p>
+		<form action="#"  th:action="@{../savecustomer}"  th:object = "${customerparameter}" method="post" >
 			
+				
+				<input type="hidden" id="id" th:field="*{paramId}" />
+				<p>Weight:<input type="text" th:field="*{weight}"/></p>
+				<p>Height:<input type="text" th:field="*{height}"/></p>
+				<p>Date:<input type="date" th:field="*{date}"/></p>
 			
-			<p><input type="submit" value="Submit" /></p>
+			<p><input type="submit" value="Save" /></p>
 		</form>
 		
 		
